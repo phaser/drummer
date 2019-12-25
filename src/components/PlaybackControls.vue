@@ -1,9 +1,24 @@
 <template>
   <div>
     <div class="btn-group" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-secondary mycontrol" v-html="icons.play"></button>
-      <button type="button" class="btn btn-secondary" v-html="icons.stop"></button>
-      <button type="button" class="btn btn-secondary" v-html="icons.pause"></button>
+      <button
+        type="button"
+        class="btn btn-secondary mycontrol"
+        v-html="icons.play"
+        @click="$emit('controls event', 'play')"
+      ></button>
+      <button
+        type="button"
+        class="btn btn-secondary"
+        v-html="icons.stop"
+        @click="$emit('controls event', 'stop')"
+      ></button>
+      <button
+        type="button"
+        class="btn btn-secondary"
+        v-html="icons.pause"
+        @click="$emit('controls event', 'pause')"
+      ></button>
     </div>
   </div>
 </template>
