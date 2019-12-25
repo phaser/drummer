@@ -16,7 +16,8 @@
         :key="item"
         :ref="'cell' + item"
         @click="clickCell('cell' + item)"
-      >o</span>
+        v-html="icons.pdot"
+      ></span>
     </div>
     <div class="row">
       <button class="btn btn-primary" @click="play">Play</button>
@@ -26,6 +27,8 @@
 </template>
 
 <script>
+import octicons from "@primer/octicons";
+
 export default {
   props: {
     audio_file: {
@@ -44,7 +47,15 @@ export default {
   data() {
     return {
       cell_status: {},
-      playInterval: null
+      playInterval: null,
+      icons: {
+        pdot: octicons["primitive-dot"].toSVG({
+          width: 12,
+          height: 12,
+          class: "mycontrol",
+          "aria-label": "Play"
+        })
+      }
     };
   },
   methods: {
@@ -52,7 +63,7 @@ export default {
       // this.$refs.audio_tag.play();
       // eslint-disable-next-line no-console
       console.log(this.$refs);
-      let bpm = 400 / 60;
+      let bpm = 130 / 60;
       let tick = 0;
       let interval = 1.0 / bpm;
       let auclip0 = this.$refs.audio_tag0;

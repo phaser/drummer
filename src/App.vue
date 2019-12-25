@@ -3,6 +3,7 @@
     <div class="row">
       <div class="col-xs-24 col-sm-16 col-sm-offset-4 col-md-12 col-md-offset-6">
         <app-playback-controls width="24" height="24" />
+        <hr />
         <app-sequencer-grid />
       </div>
     </div>
