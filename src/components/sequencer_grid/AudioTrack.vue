@@ -1,11 +1,11 @@
 <template>
-  <div class="container">
+  <div class="container mb-2">
     <audio :src="audio_file" ref="audio_tag0"></audio>
     <audio :src="audio_file" ref="audio_tag1"></audio>
     <audio :src="audio_file" ref="audio_tag2"></audio>
     <audio :src="audio_file" ref="audio_tag3"></audio>
     <div class="row">
-      <span class="badge badge-success" style="height: 40px; width: 100px">
+      <span class="badge badge-success mr-1" style="height: 40px; width: 100px">
         <br />
         {{ track_name }}
       </span>

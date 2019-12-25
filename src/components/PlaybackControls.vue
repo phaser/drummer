@@ -1,36 +1,43 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="btn-group col-2" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-secondary mycontrol" v-html="icons.play" @click="play"></button>
-        <button type="button" class="btn btn-secondary" v-html="icons.stop" @click="stop"></button>
-        <button type="button" class="btn btn-secondary" v-html="icons.pause" @click="pause"></button>
-      </div>
-      <div class="input-group col-2 mb-3">
-        <div class="input-group-prepend input-group-prepend-sm">
-          <span class="input-group-text" id="basic-addon1">BPM</span>
+      <div class="btn-toolbar mt-3" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group mr-2" role="group" aria-label="Basic example">
+          <button
+            type="button"
+            class="btn btn-secondary mycontrol"
+            v-html="icons.play"
+            @click="play"
+          ></button>
+          <button type="button" class="btn btn-secondary" v-html="icons.stop" @click="stop"></button>
+          <button type="button" class="btn btn-secondary" v-html="icons.pause" @click="pause"></button>
         </div>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="130"
-          aria-label="Beats per minute"
-          aria-describedby="basic-addon1"
-          v-model="bpm"
-        />
-      </div>
-      <div class="input-group col-2 mb-3">
-        <div class="input-group-prepend input-group-prepend-sm">
-          <span class="input-group-text" id="basic-addon1">Grid size</span>
+        <div class="input-group mr-2 col-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">BPM</span>
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="130"
+            aria-label="Beats per minute"
+            aria-describedby="basic-addon1"
+            v-model="bpm"
+          />
         </div>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="32"
-          aria-label="Beats per minute"
-          aria-describedby="basic-addon1"
-          v-model="gridSize"
-        />
+        <div class="input-group col-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Grid size</span>
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="32"
+            aria-label="Beats per minute"
+            aria-describedby="basic-addon1"
+            v-model="gridSize"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -103,8 +110,6 @@ export default {
       let interval = 1.0 / bpm;
       let gridSize = this.$store.getters.getGridSize;
       this.playInterval = setInterval(() => {
-        // eslint-disable-next-line no-console
-        console.log("Tick: " + tick);
         if (!this.isPaused) {
           this.$root.$emit("play_tick", tick);
           tick++;
