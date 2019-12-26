@@ -10,21 +10,19 @@
         {{ track_name }}
       </span>
       <span
-        class="badge badge-secondary"
-        style="width: 20px; height: 40px; cursor: pointer"
+        :class="getClass(index)"
+        style="min-width: 20px; min-height: 40px; cursor: pointer"
         v-for="(item, index) in cell_status"
         :key="index"
         :ref="index"
         @click="clickCell(index)"
-        v-html="icons.pdot"
+        v-html="'&nbsp'"
       ></span>
     </div>
   </div>
 </template>
 
 <script>
-import octicons from "@primer/octicons";
-
 export default {
   props: {
     audio_file: {
@@ -38,16 +36,7 @@ export default {
   },
   data() {
     return {
-      cell_status: [],
-      playInterval: null,
-      icons: {
-        pdot: octicons["primitive-dot"].toSVG({
-          width: 12,
-          height: 12,
-          class: "mycontrol",
-          "aria-label": "Play"
-        })
-      }
+      cell_status: []
     };
   },
   methods: {
@@ -79,7 +68,7 @@ export default {
       this.$refs[cellRef][0].className =
         this.cell_status[cellRef].status == true
           ? "badge badge-primary"
-          : "badge badge-secondary";
+          : this.getClass(cellRef);
     },
     populateGrid(size) {
       // eslint-disable-next-line no-console
@@ -91,6 +80,13 @@ export default {
           state: false
         });
       }
+    },
+    getClass(index) {
+      // eslint-disable-next-line no-console
+      console.log("index: " + index);
+      return Math.floor(index / 4) % 2 == 0
+        ? "badge badge-secondary"
+        : "badge badge-dark";
     }
   },
   computed: {

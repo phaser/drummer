@@ -105,7 +105,7 @@ export default {
       if (this.playInterval != null) {
         clearInterval(this.playInterval);
       }
-      let bpm = this.bpm / 60;
+      let bpm = (this.bpm / 60.0) * 4;
       let tick = 0;
       let interval = 1.0 / bpm;
       let gridSize = this.$store.getters.getGridSize;
