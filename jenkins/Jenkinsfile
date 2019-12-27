@@ -25,9 +25,9 @@ pipeline {
         stage ('Archive & Publish build') {
             steps {
                 sh '''
-                    tar -C dist -czvf drummer-${BUILD_NUMBER}.tar.gz .
+                    tar -C dist -czvf drummer.tar.gz .
                 '''
-                archiveArtifacts artifacts: 'drummer-*.tar.gz', fingerprint: true, onlyIfSuccessful: true
+                archiveArtifacts artifacts: 'drummer.tar.gz', fingerprint: true, onlyIfSuccessful: true
             }
         }
     }
