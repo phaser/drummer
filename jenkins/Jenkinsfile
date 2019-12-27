@@ -1,9 +1,19 @@
 pipeline {
     agent any 
     stages {
-        stage('Stage 1') {
+        stage('Install NPM modules') {
             steps {
-                echo 'Hello world!' 
+                npm install 
+            }
+        }
+        stage('Lint') {
+            steps {
+                npm run lint
+            }
+        }
+        stage ('Build') {
+            steps {
+                npm run build
             }
         }
     }
