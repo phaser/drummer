@@ -22,5 +22,8 @@ pipeline {
                 '''
             }
         }
+        stage ('Archive & Publish build') {
+            archiveArtifacts artifacts: 'dist/**/*', fingerprint: true, onlyIfSuccessful: true
+        }
     }
 }
