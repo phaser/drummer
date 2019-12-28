@@ -22,12 +22,20 @@ pipeline {
                 '''
             }
         }
+        stage ('Tests') {
+            steps {
+                sh '''
+                    npm run test:unit -- -R xunit | grep "^<"  > tests_result.xml
+                '''
+            }
+        }
         stage ('Archive & Publish build') {
             steps {
                 sh '''
                     tar -C dist -czvf drummer.tar.gz .
                 '''
                 archiveArtifacts artifacts: 'drummer.tar.gz', fingerprint: true, onlyIfSuccessful: true
+                xunit([JUnit(deleteOutputFiles: true, failIfNotNew: true, pattern: 'tests_result.xml', skipNoTestFiles: false, stopProcessingIfError: true)])
             }
         }
     }
