@@ -12,10 +12,10 @@ let store
 beforeEach(() => {
     getters = {
         getBpm: () => {
-            return 130;
+            return 132;
         },
         getGridSize: () => {
-            return 32;
+            return 16;
         }
     };
     store = new Vuex.Store({
@@ -24,7 +24,7 @@ beforeEach(() => {
 })
 
 describe('PlaybackController.vue', () => {
-    it('renders props.msg when passed', () => {
+    it('renders the value of $store.getters.getBpm', () => {
         const width = '16'
         const height = '16'
         const wrapper = shallowMount(PlaybackControls, {
@@ -32,6 +32,17 @@ describe('PlaybackController.vue', () => {
             store,
             localVue
         })
-        expect(wrapper.text()).to.include('');
+        expect(wrapper.vm.$el.children[0].children[0].children[1].children[1].value).to.equal("132");
+    })
+
+    it('renders the value of $store.getters.getGridSize', () => {
+        const width = '16'
+        const height = '16'
+        const wrapper = shallowMount(PlaybackControls, {
+            propsData: { width, height },
+            store,
+            localVue
+        })
+        expect(wrapper.vm.$el.children[0].children[0].children[2].children[1].value).to.equal("16");
     })
 })
