@@ -104,6 +104,17 @@ export default {
     this.$root.$on("play_tick", value => {
       this.play(value);
     });
+
+    // test with audio context per channel that can become a mixer
+    let auclip0 = this.$refs.audio_tag0;
+    let auclip1 = this.$refs.audio_tag1;
+    let auclip2 = this.$refs.audio_tag2;
+    let auclip3 = this.$refs.audio_tag3;
+    const audioCtx = this.$store.getters.getAudioContext;
+    audioCtx.createMediaElementSource(auclip0).connect(audioCtx.destination);
+    audioCtx.createMediaElementSource(auclip1).connect(audioCtx.destination);
+    audioCtx.createMediaElementSource(auclip2).connect(audioCtx.destination);
+    audioCtx.createMediaElementSource(auclip3).connect(audioCtx.destination);
   }
 };
 </script>

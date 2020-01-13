@@ -6,7 +6,8 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
     state: {
         bpm: 130,
-        gridSize: 32
+        gridSize: 32,
+        audioContext: null
     },
     getters: {
         getBpm: state => {
@@ -14,6 +15,14 @@ export const store = new Vuex.Store({
         },
         getGridSize: state => {
             return state.gridSize;
+        },
+        getAudioContext: state => {
+            if (state.audioContext === null) {
+                // for cross browser
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                state.audioContext = new AudioContext();
+            }
+            return state.audioContext;
         }
     },
     mutations: {
