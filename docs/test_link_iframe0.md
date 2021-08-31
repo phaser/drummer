@@ -1,5 +1,7 @@
 ## Test Link for IFrame child 0
 
+![Iframe 0 Logo](/assets/iframe0.png)
+
 This is a text in iFrame 0. Pariatur consequuntur eos officia expedita
 inventore voluptatem optio voluptatem. Ut eum omnis fuga. Quisquam illo
 suscipit saepe saepe sit similique sit. Tenetur ipsa voluptatem nihil eum
