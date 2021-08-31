@@ -1,3 +1,3 @@
 ## Iframe 1
 
-Just a test [Github](https://www.github.com)
+Just a test [test link 1](https://phaser.github.io/drummer/test_link_iframe1)
